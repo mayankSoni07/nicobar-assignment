@@ -1,1 +1,1 @@
-export * from './test-constants.js';
+export * from './test-constants';
