@@ -1,1 +1,2 @@
-export const TEST_ACTION = "test_action";
+export const GET_SHOP_DATA = "GET_SHOP_DATA";
+export const GET_FIRSTVISIT_DATA = "GET_FIRSTVISIT_DATA";

@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         {/* Button to display/hide First component */}
-        <button onClick={() => self.setState({ switch: !self.state.switch })}>
+        <button className="displayHideButton" onClick={() => self.setState({ switch: !self.state.switch })}>
           {self.state.switch && "Hide"}
           {!self.state.switch && "Display"}
         </button>

@@ -1,15 +1,19 @@
 import * as constants from '../constants';
 
 const initialState = {
-    test: ""
 }
 
 export const testReducer = (state = initialState, action) => {
   switch (action.type) {
-    case constants.TEST_ACTION:
+    case constants.GET_SHOP_DATA:
       return {
         ...state,
-        test: action.payload.test
+        shopData: action.payload.shopData
+      }
+      case constants.GET_FIRSTVISIT_DATA:
+      return {
+        ...state,
+        firstVisitData: action.payload.firstVisitData
       }
 
     default:
