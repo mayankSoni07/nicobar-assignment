@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-
 import { getShopData } from '../../redux/actions';
 import '../../common.css';
 
-let self;
-
 class Shop extends Component {
-    constructor(props) {
-        super(props);
-        self = this;
-    }
-
     componentDidMount() {
+        /** Action call to fetch Shop data. */
         this.props.getShopData();
     }
 
     render() {
+        /** Assigning data from props (Used ES6) */
+        const { shopData } = this.props;
         return (
             <section className="twxt" style={{ "marginTop": "77px" }}>
                 <div className="container">
                     <section className="image-effect">
                         <div className="row">
-                            {this.props.shopData && this.props.shopData.our_shop.map((item, index) => {
-                                return self.displayShop(item, index)
+                            {shopData && shopData.our_shop.map((item, index) => {
+                                return this.displayShop(item, index)
                             })}
                         </div>
                     </section>
@@ -33,13 +28,16 @@ class Shop extends Component {
         );
     }
 
+    /** Used to display shop dynamically by resuable code. */
     displayShop(item, index) {
         let style = {};
+        /** Style : Add padding for left/right */
         if (index % 2) {
             style["padding"] = "0px 0px 0px 27px";
         } else {
             style["padding"] = "0px 27px 0px 0px";
         }
+        /** Style : Add Margin on Top for more than One row. */
         if (index > 1) {
             style["marginTop"] = "77px";
         }
@@ -69,10 +67,7 @@ const mapStateToProps = state => {
         shopData: state.testReducer.shopData
     }
 }
-
-const mapDispatchToProps = (dispatch, getState) => bindActionCreators({
-    getShopData
-}, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getShopData }, dispatch);
 
 Shop = connect(mapStateToProps, mapDispatchToProps)(Shop)
 export default Shop;

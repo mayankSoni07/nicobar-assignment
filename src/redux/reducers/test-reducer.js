@@ -1,7 +1,6 @@
 import * as constants from '../constants';
 
-const initialState = {
-}
+const initialState = {};
 
 export const testReducer = (state = initialState, action) => {
   switch (action.type) {

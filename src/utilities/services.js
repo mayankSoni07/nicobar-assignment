@@ -1,3 +1,5 @@
+/** Mock data, Treated as service call for now. */
+
 // Shop Mock Data
 export const ShopData = () => {
     return {

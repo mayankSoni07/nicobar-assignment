@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-
 import { getFirstVisitData } from '../../redux/actions';
 import '../../common.css';
 
 class FirstVisit extends Component {
     componentDidMount() {
+        /** Action call to fetch FirstVisit data. */
         this.props.getFirstVisitData();
     }
 
     render() {
         let new_arrivals;
+        /** Assigning data from props (Used ES6) */
         const { firstVisitData } = this.props;
         if (firstVisitData)
             new_arrivals = firstVisitData.new_arrivals;
@@ -60,10 +61,7 @@ const mapStateToProps = state => {
         firstVisitData: state.testReducer.firstVisitData
     }
 }
-
-const mapDispatchToProps = (dispatch, getState) => bindActionCreators({
-    getFirstVisitData
-}, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getFirstVisitData }, dispatch);
 
 FirstVisit = connect(mapStateToProps, mapDispatchToProps)(FirstVisit)
 export default FirstVisit;
