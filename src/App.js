@@ -1,37 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { bindActionCreators } from 'redux';
-
-import { testAction } from './redux/actions';
-import './App.css';
+import { FirstVisit, Shop } from './components';
+let self;
 
 class App extends Component {
-  componentDidMount() {
-    this.props.testAction({ test: "hello" });
+  constructor(props) {
+    super(props);
+    self = this;
+    this.state = {
+      switch: false
+    }
   }
+
   render() {
-    console.log('test reducer : ', this.props.test)
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
+        {/* Button to display/hide First component */}
+        <button onClick={() => self.setState({ switch: !self.state.switch })}>
+          {self.state.switch && "Hide"}
+          {!self.state.switch && "Display"}
+        </button>
+
+        {/* First Component */}
+        {self.state.switch && <FirstVisit />}
+        {/* Second Component */}
+        <Shop />
+        
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    test: state.testReducer.test
-  }
-}
-
-const mapDispatchToProps = (dispatch, getState) => bindActionCreators({
-  testAction
-}, dispatch);
-
-App = connect(mapStateToProps, mapDispatchToProps)(App)
 export default App;
