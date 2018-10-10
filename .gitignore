@@ -1,0 +1,17 @@
+
+# Dependency directories
+node_modules
+jspm_packages
+typings
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+#IGNORE FILE
+.DS_Store
+.vscode
+build/
+package-lock.json
